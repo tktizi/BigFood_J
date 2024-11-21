@@ -19,5 +19,5 @@ services:
     environment:
       POSTGRES_PASSWORD: pass
     volumes:
-      - ./infrastructure/init2.sql:/docker-entrypoint-initdb.d/init2.sql
+      - ./infrastructure/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./docker/postgres/data:/var/lib/postgresql/data
