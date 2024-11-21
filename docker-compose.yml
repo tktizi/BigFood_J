@@ -1,0 +1,23 @@
+version: '4'
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    ports:
+      - "5433:5432"  # mapping 5433 locally to 5432 in image
+    environment:
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - ./infrastructure/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/postgres/data:/var/lib/postgresql/data
+
+  postgres_orders:
+    image: postgres:16
+    container_name: postgres_orders
+    ports:
+      - "5434:5432"  
+    environment:
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - ./infrastructure/init2.sql:/docker-entrypoint-initdb.d/init2.sql
+      - ./docker/postgres/data:/var/lib/postgresql/data
